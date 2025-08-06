@@ -6,12 +6,24 @@ on:
       - main
 
 jobs:
-  build:
+  deploy:
     runs-on: self-hosted
 
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Bring up Docker containers
-        run: docker compose up --build -d
+      - name: Copy env file into workspace
+        run: |
+          echo "Copying env file to workspace..."
+          cp /home/super/tambola-actionrunner/.env.docker $GITHUB_WORKSPACE/frontend-tambola/.env.docker
+
+      - name: Build and Run Docker Compose
+        run: |
+          echo "Building and starting containers..."
+          docker compose -f docker-compose.yml --env-file frontend-tambola/.env.docker up --build -d
+
+      - name: Clean Up Unused Images
+        run: |
+          echo "Cleaning up unused Docker images..."
+          docker image prune -f
