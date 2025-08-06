@@ -18,7 +18,7 @@ jobs:
           echo "Creating .env.docker file in frontend directory..."
           cat > ./frontend-tambola/.env.docker << EOF
           # API Configuration
-          NEXT_PUBLIC_API_BASE_URL=https://tambola.adityavikram.dev/api
+          NEXT_PUBLIC_API_BASE_URL=https://tambola.adityavikram.dev
           NEXT_PUBLIC_API_TIMEOUT=10000
           # App Configuration
           NEXT_PUBLIC_APP_NAME=Multiplayer Bingo
