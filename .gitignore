@@ -6,3 +6,4 @@
 /backend/models/__pycache__
 /backend/schemas/__pycache__
 /backend/utils/__pycache__
+*.db
