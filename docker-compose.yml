@@ -3,11 +3,9 @@ services:
     build:
       context: ./frontend-tambola
     env_file:
-      - .env.docker
+      - ./frontend-tambola/.env.docker  # Changed from .env.docker
     ports:
       - "8119:3000"
-
-
   backend:
     build:
       context: ./backend
