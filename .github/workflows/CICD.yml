@@ -15,11 +15,20 @@ jobs:
 
       - name: Create Environment File
         run: |
-          echo "Creating .env.docker file..."
-          cat > .env.docker << EOF
-          NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}
-          NEXT_PUBLIC_APP_ENV=${{ secrets.NEXT_PUBLIC_APP_ENV }}
-          # Add other frontend environment variables here
+          echo "Creating .env.docker file in frontend directory..."
+          cat > ./frontend-tambola/.env.docker << EOF
+          # API Configuration
+          NEXT_PUBLIC_API_BASE_URL=http://backend:8120
+          NEXT_PUBLIC_API_TIMEOUT=10000
+          # App Configuration
+          NEXT_PUBLIC_APP_NAME=Multiplayer Bingo
+          NEXT_PUBLIC_APP_VERSION=2.0.0
+          # Feature Flags
+          NEXT_PUBLIC_ENABLE_ADMIN_PANEL=true
+          NEXT_PUBLIC_ENABLE_VOICE_ANNOUNCER=true
+          NEXT_PUBLIC_AUTO_REFRESH_INTERVAL=5000
+          # Development
+          NEXT_PUBLIC_DEBUG_MODE=false
           EOF
 
       - name: Build and Run Docker Compose
