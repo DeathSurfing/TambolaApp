@@ -1,3 +1,8 @@
 /backend/app/api/__pycache__
 /frontend-tambola/node_modules
 /frontend-tambola/.next
+/backend/__pycache__
+/backend/app/__pycache__
+/backend/models/__pycache__
+/backend/schemas/__pycache__
+/backend/utils/__pycache__
