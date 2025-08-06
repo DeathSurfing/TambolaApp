@@ -1,0 +1,59 @@
+
+# Root .gitignore for FastAPI + Next.js Monorepo
+
+# ========================
+# /backend/ (FastAPI app)
+# ========================
+/backend/__pycache__/
+/backend/*.py[cod]
+/backend/.pytest_cache/
+/backend/.mypy_cache/
+/backend/.env
+/backend/env/
+/backend/venv/
+/backend/.venv/
+/backend/.idea/
+/backend/.DS_Store
+/backend/.coverage
+/backend/htmlcov/
+/backend/*.sqlite3
+/backend/bingo.db
+/backend/*.db
+!/backend/.gitkeep
+
+# If using poetry
+/backend/poetry.lock
+/backend/*.egg-info/
+/backend/build/
+/backend/dist/
+
+# If using pipenv
+/backend/Pipfile.lock
+
+# =============================
+# /frontend-tambola/ (Next.js)
+# =============================
+/frontend-tambola/.next/
+/frontend-tambola/node_modules/
+/frontend-tambola/.env
+/frontend-tambola/.env.local
+/frontend-tambola/.env.*.local
+/frontend-tambola/.turbo/
+/frontend-tambola/.eslintcache
+/frontend-tambola/.idea/
+/frontend-tambola/.DS_Store
+/frontend-tambola/yarn.lock
+/frontend-tambola/package-lock.json
+/frontend-tambola/coverage/
+/frontend-tambola/public/build/
+/frontend-tambola/out/
+/frontend-tambola/dist/
+!/frontend-tambola/.gitkeep
+
+# Optional: logs
+**/*.log
+npm-debug.log*
+
+# Optional: system files
+Thumbs.db
+ehthumbs.db
