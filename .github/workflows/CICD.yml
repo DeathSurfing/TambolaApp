@@ -17,7 +17,8 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Copy .env.docker into frontend folder
-        run: cp /home/super/tambola-actionrunner/.env.docker ./frontend-tambola/.env.docker
+        run: cp /home/super/tambola-actionrunner/.env.docker $GITHUB_WORKSPACE/frontend-tambola/.env.docker
+
 
       - name: Build Docker containers
         run: docker-compose build
