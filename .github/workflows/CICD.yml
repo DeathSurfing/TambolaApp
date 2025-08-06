@@ -1,23 +1,29 @@
-name: Build and Deploy Tambola
+name: Deploy Tambola
 
 on:
   push:
     branches:
-      - main
+      - main  # or your deployment branch
 
 jobs:
-  build-and-run:
-    runs-on: [self-hosted, linux]
+  deploy:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Copy .env.docker to project root
-        run: cp /home/super/tambola-actionrunner/.env.docker .env.docker
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
-      - name: Build containers
-        run: docker-compose build --no-cache
+      - name: Copy .env.docker into frontend folder
+        run: cp /home/super/tambola-actionrunner/.env.docker ./frontend-tambola/.env.docker
 
-      - name: Run containers
-        run: docker-compose up -d --remove-orphans
+      - name: Build Docker containers
+        run: docker-compose build
+
+      - name: Run Docker containers
+        run: docker-compose up -d
+
+      - name: Cleanup env file from frontend
+        run: rm ./frontend-tambola/.env.docker
