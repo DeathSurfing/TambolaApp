@@ -5,8 +5,10 @@ WORKDIR /app
 
 COPY package*.json ./
 
-# Use legacy-peer-deps during install
 RUN npm install --legacy-peer-deps
+
+# Copy environment variables before build step
+COPY .env.docker .env.local
 
 COPY . .
 

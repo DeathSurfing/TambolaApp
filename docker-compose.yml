@@ -2,15 +2,16 @@ services:
   frontend:
     build:
       context: ./frontend-tambola
-      dockerfile: Dockerfile
+    env_file:
+      - .env.docker
     ports:
-      - "8419:3000"
-    restart: unless-stopped
+      - "8119:3000"
+
 
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - "8420:8000"
+      - "8120:8000"
     restart: unless-stopped
